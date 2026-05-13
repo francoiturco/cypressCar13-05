@@ -1,18 +1,24 @@
 {
-  "name": "crowdar",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "startChrome": "cypress open --e2e --browser chrome",
-    "startFirefox": "cypress open --e2e --browser firefox"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "allure-cypress": "^3.8.0",
-    "cypress": "^15.15.0",
-    "dotenv": "^17.4.2"
-  }
+    "name": "crowdar",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "startChrome": "cypress open --e2e --browser chrome",
+        "startFirefox": "cypress open --e2e --browser firefox",
+        "cy:chrome": "npx cypress run --browser chrome",
+        "cy:firefox": "npx cypress run --browser firefox",
+        "allure:clean": "rimraf allure-results allure-report",
+        "allure:generate": "allure generate allure-results --clean",
+        "allure:open": "allure open allure-report"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "allure-cypress": "^3.8.0",
+        "cypress": "^15.15.0",
+        "dotenv": "^17.4.2",
+        "rimraf": "^6.1.3"
+    }
 }

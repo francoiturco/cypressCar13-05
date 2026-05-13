@@ -1,6 +1,6 @@
 class LoginPageData {
 
-    "loginErrorMessage" = "Epic sadface: Sorry, this user has been locked out."
+    "loginErrorMessage" = "Epic sadface: Username and password do not match any user in this service"
 }
 
 export const loginPageData = new LoginPageData()

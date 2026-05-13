@@ -1,21 +1,31 @@
 /// <reference types="cypress" />
 
+// DATA IMPORTS
+import {apiData} from '../../fixtures/api/APIData'
+
 describe('Mercado Libre API', () => {
 
     it('Should contain departments', () => {
 
         cy.request(
-            'GET',
-            'https://www.mercadolibre.com.ar/menu/departments'
+            {
+                method: apiData.methods.GET,
+                url: `${Cypress.env('mercadoLibreApiUrl')}/menu/departments`,
+                headers: {
+                    'User-Agent': apiData.headers
+                }
+            }
         ).then((response) => {
 
-            expect(response.status).to.eq(200)
+            // Log de debug para ver la respuesta completa
+            // cy.log('Body:', JSON.stringify(response.body));
 
-            expect(response.body)
-                .to.have.property('departments')
+            expect(response.status).to.eq(200);
 
-            expect(response.body.departments.length)
-                .to.be.greaterThan(0)
+            expect(response.body).to.have.property(apiData.properties.departments);
+
+            expect(response.body.departments.length).to.be.greaterThan(0);
         })
     })
+
 })

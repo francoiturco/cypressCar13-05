@@ -13,17 +13,22 @@ describe('Login Test Cases', () => {
         cy.visit('/')
     });
 
-    it('Successfull Login', () => {
+    it('CP-LOGIN-001 – Login exitoso con credenciales válidas', () => {
         loginPage.login(Cypress.env('standardUsername'), Cypress.env('password'));
         cartPage.verifyAppLogo(cartPageData.appLogoText);
     });
 
-    it('Failed Login', () => {
+    it('CP-LOGIN-002 – Login con contraseña incorrecta', () => {
+        loginPage.login(Cypress.env('standardUsername'), Cypress.env('incorrectPassword'));
+        loginPage.validateError(loginPageData.loginErrorMessage);
+    });
+    
+    it('CP-LOGIN-003 – Login con usuario inexistente', () => {
         loginPage.login(Cypress.env('incorrectUsername'), Cypress.env('password'));
         loginPage.validateError(loginPageData.loginErrorMessage); 
     });
 
-    it('Visual User Successfull Login', () => {
+    it('CP-LOGIN-009 – Login con usuario visual', () => {
         loginPage.login(Cypress.env('visualUsername'), Cypress.env('incorrectPassword'));
         cartPage.verifyAppLogo(cartPageData.appLogoText);
     });

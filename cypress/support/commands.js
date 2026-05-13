@@ -23,3 +23,33 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+/**
+ * Save any field text in the temporal file runData.json, to be used in other test cases
+ */
+Cypress.Commands.add('saveText', (value, keyName) => {
+
+    let valueConverted = value
+
+        const filename = 'cypress/fixtures/runData/runData.json'
+
+    cy.readFile(filename, {flag: 'a+'}).then(($list) => {
+        $list[keyName] = valueConverted;
+        cy.log(`Store the value ${valueConverted} with the key ${keyName}`)
+        cy.writeFile(filename, $list);
+    });
+    
+});
+
+/**
+ * Returns the data from temporal file runData.json, previously stored with the command saveText, to be used in other test cases
+ */
+Cypress.Commands.add('returnData', (value, keyName) => {
+
+    const filename = 'cypress/fixtures/runData/runData.json'
+
+    return cy.readFile(filename).then(($obj) => {
+        return $obj
+    });
+
+});
