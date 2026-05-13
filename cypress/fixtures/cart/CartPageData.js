@@ -1,7 +1,5 @@
 class CartPageData {
 
-    "appLogoText" = "Swag Labs"
-
     productNames = {
         "sauceLabsFleeceJacketProductName" : "Sauce Labs Fleece Jacket",
         "sauceLabsBoltTShirtProductName" : "Sauce Labs Bolt T-Shirt",
