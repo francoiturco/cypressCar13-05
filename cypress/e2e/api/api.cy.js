@@ -5,7 +5,7 @@ import {apiData} from '../../fixtures/api/APIData'
 
 describe('Mercado Libre API', () => {
 
-    it('Should contain departments', () => {
+    it('CP-APIML-001 – Verificar existencia de departamentos', () => {
 
         cy.request(
             {
