@@ -10,9 +10,9 @@ module.exports = defineConfig({
 
             return config;
         },
-
+        defaultCommandTimeout: 10000,
+        pageLoadTimeout: 60000,
         baseUrl: process.env.BASE_URL,
-
         env: {
             standardUsername: process.env.STANDARD_USERNAME,
             visualUsername: process.env.VISUAL_USERNAME,
